@@ -14,9 +14,12 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
+  type HomeMessage = { message: string };
   describe('root', () => {
     it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+      expect(appController.getHello()).toMatchObject<HomeMessage>({
+        message: 'Hello World!',
+      });
     });
   });
 });
